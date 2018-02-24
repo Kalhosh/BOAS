@@ -5,6 +5,7 @@ import java.awt.geom.Point2D;
 import java.awt.image.ImageObserver;
 
 import algorithms.ColisionHandler;
+import entities.IMap;
 import map_exceptions.InvalidMapDimensionException;
 import resources.AbstractGround;
 import resources.DisplayInfo;
@@ -12,7 +13,7 @@ import resources.DisplayInfo;
 /**
  * @author BIZOT Loïc
  */
-public abstract class AbstractMap implements ColisionHandler{
+public abstract class AbstractMap implements ColisionHandler,IMap{
 
 	private AbstractGround ground[][];
 	private int X;

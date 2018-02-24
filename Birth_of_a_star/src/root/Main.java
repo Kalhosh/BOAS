@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import algorithms.OptimiserTag;
 import algorithms.Path;
 import algorithms.Pathfinding;
+import entities.AbstractEntity;
 import map_exceptions.InvalidMapDimensionException;
 import map_exceptions.OutOfMapBoundsException;
 import maps.AbstractMap;
@@ -20,7 +21,7 @@ import resources.AbstractGround;
 
 public class Main {
 
-	public static void main(String[] args) throws InvalidMapDimensionException, OutOfMapBoundsException {
+	public static void testPathfinding() throws InvalidMapDimensionException, OutOfMapBoundsException {
 		
 		// test pathfinding
 		
@@ -62,6 +63,16 @@ public class Main {
 					
 				}
 					
+			}
+
+			@Override
+			public void addEntity(AbstractEntity e) {
+				
+			}
+
+			@Override
+			public void removeEntity(AbstractEntity e) {
+				
 			}
 			
 		};
@@ -211,6 +222,10 @@ public class Main {
 		j.setVisible(true);
 		
 		// fin test pathfinding
+		
+	}
+	
+	public static void main(String[] args) {
 		
 	}
 
