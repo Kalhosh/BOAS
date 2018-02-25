@@ -3,6 +3,7 @@ package maps;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.awt.image.ImageObserver;
+import java.util.ArrayList;
 
 import algorithms.ColisionHandler;
 import entities.IMap;
@@ -16,6 +17,7 @@ import resources.DisplayInfo;
 public abstract class AbstractMap implements ColisionHandler,IMap{
 
 	private AbstractGround ground[][];
+	private ArrayList<Warp> warps;
 	private int X;
 	private int Y;
 	
@@ -97,19 +99,31 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 		
 	}
 
-	@Override
+	/**
+	 * @see algorithms.ColisionHandler#getWidth()
+	 */
 	public int getWidth() {
 		return X;
 	}
 
-	@Override
+	/**
+	 * @see algorithms.ColisionHandler#getHeight()
+	 */
 	public int getHeight() {
 		return Y;
 	}
 	
+	/**
+	 * <p> remplissage de la map, a redefinir dans les classes filles </p>
+	 */
 	public abstract void fillMap();
 	
-	// a enlever
+	/**
+	 * <p> ajout d'un sol g aux coordonnees (x, y) </p>
+	 * @param g le type de sol
+	 * @param x la coordonnee x
+	 * @param y la coordonnee y
+	 */
 	public void addGround(AbstractGround g, int x, int y) {
 		
 		this.ground[x][y] = g;

@@ -7,25 +7,34 @@ import entities.IMap;
 import entities.IWarp;
 
 public class Warp implements IWarp{
-
-	// source
-	private AbstractMap source;
-	private Rectangle2D zone;
+	
+	private Rectangle2D warpArea;
 	
 	// destination
 	private AbstractMap dest;
 	private Point2D coordDest;
 	
-	@Override
+	/**
+	 * @see entities.IWarp#getDest()
+	 */
 	public IMap getDest() {
 
 		return dest;
 	}
 	
-	@Override
+	/**
+	 * @see entities.IWarp#getCoord()
+	 */
 	public Point2D getCoord() {
 
 		return coordDest;
+	}
+	
+	/**
+	 * @see entities.IWarp#getWarpArea()
+	 */
+	public Rectangle2D getWarpArea() {
+		return this.warpArea;
 	}
 	
 }

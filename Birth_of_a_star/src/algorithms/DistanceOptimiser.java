@@ -18,7 +18,10 @@ public class DistanceOptimiser implements PathOptimiser{
 		
 	}
 
-	@Override
+	/**
+	 * @see algorithms.PathOptimiser#compare(Link, Link)
+	 * <p> compare en fonction de la distance a la fin </p>
+	 */
 	public int compare(Link o1, Link o2) {
 		
 		int indexP1 = o1.getIndex();

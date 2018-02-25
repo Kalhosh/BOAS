@@ -19,7 +19,14 @@ public interface ColisionHandler {
 	 */
 	boolean isInBounds(Point2D coord);
 	
+	/**
+	 * @return la largeur de la carte
+	 */
 	int getWidth();
+	
+	/**
+	 * @return la largeur de la carte
+	 */
 	int getHeight();
 	
 }
