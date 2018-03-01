@@ -52,6 +52,15 @@ public class Coordinates {
 	}
 	
 	/**
+	 * <p> change le positionnement de la case </p>
+	 * @param c la nouvelle position
+	 */
+	public void setCoordinates(Coordinates c) {
+		this.x = c.x;
+		this.y = c.y;
+	}
+	
+	/**
 	 * @param c une autre coordonnée
 	 * @return la distance euclidienne entre cette case et c 
 	 */

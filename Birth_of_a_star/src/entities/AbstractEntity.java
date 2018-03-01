@@ -1,12 +1,14 @@
 package entities;
 
-import java.awt.geom.Point2D;
-
+import resources.Coordinates;
 import resources.Displayable;
 
+/**
+ * @author BIZOT Loïc
+ */
 public abstract class AbstractEntity implements Displayable{
 
-	private Point2D coords;
+	private Coordinates coords;
 	private IMap area;
 	
 	/**
@@ -18,9 +20,36 @@ public abstract class AbstractEntity implements Displayable{
 	
 		area.removeEntity(this);
 		area = warp.getDest();
-		coords.setLocation(warp.getCoord());
+		coords.setCoordinates(warp.getCoord());
 		area.addEntity(this);
 		
 	}
+	
+	/**
+	 * <p> demande la permission a la carte pour se déplacer, lance le déplacement si ok
+	 * @param direction la direction dans laquelle se déplacer
+	 */
+	public void requestMove(Movement direction) {
+		
+		// calcul des nouvelles coordonnées
+		double theta = Math.PI*direction.ordinal()/2;
+		int nx = (int) (coords.getX() + Math.cos(theta));
+		int ny = (int) (coords.getY() + Math.sin(theta));
+		Coordinates newC = new Coordinates(nx,ny);
+		
+		// requette a la carte
+		boolean request = area.requestPassThrough(newC, coords, this);
+		
+		// deplacement si le resultat de la requete est positive
+		if(request)
+			move(direction);
+		
+	}
+	
+	/**
+	 * <p> déplacement de l'entite </p>
+	 * @param direction la direction dans laquelle se déplacer
+	 */
+	protected abstract void move(Movement direction);
 	
 }

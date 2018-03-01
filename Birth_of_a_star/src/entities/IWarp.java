@@ -1,7 +1,8 @@
 package entities;
 
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+
+import resources.Coordinates;
 
 public interface IWarp {
 
@@ -13,7 +14,7 @@ public interface IWarp {
 	/**
 	 * @return les coordonnees sur la carte en bout de warp
 	 */
-	Point2D getCoord();
+	Coordinates getCoord();
 	
 	/**
 	 * @return la zone de la carte origine sur laquelle ss'effectue le warp

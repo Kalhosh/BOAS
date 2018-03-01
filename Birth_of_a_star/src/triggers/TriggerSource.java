@@ -3,6 +3,7 @@ package triggers;
 import java.util.ArrayList;
 
 /**
+ * <p> un élément déclencheur basique </p>
  * @author BIZOT Loïc
  */
 public class TriggerSource {

@@ -1,6 +1,7 @@
 package triggers;
 
 /**
+ * <p> la cible d'un declencheur, modifie des caracteristiques </p>
  * @author BIZOT Loïc
  */
 public interface TriggerTarget {

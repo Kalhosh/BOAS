@@ -1,10 +1,10 @@
 package maps;
 
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import entities.IMap;
 import entities.IWarp;
+import resources.Coordinates;
 
 public class Warp implements IWarp{
 	
@@ -12,21 +12,19 @@ public class Warp implements IWarp{
 	
 	// destination
 	private AbstractMap dest;
-	private Point2D coordDest;
+	private Coordinates coordDest;
 	
 	/**
 	 * @see entities.IWarp#getDest()
 	 */
 	public IMap getDest() {
-
 		return dest;
 	}
 	
 	/**
 	 * @see entities.IWarp#getCoord()
 	 */
-	public Point2D getCoord() {
-
+	public Coordinates getCoord() {
 		return coordDest;
 	}
 	

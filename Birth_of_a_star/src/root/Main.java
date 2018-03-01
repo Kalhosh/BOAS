@@ -74,6 +74,11 @@ public class Main {
 			public void removeEntity(AbstractEntity e) {
 				
 			}
+
+			@Override
+			public boolean requestPassThrough(Coordinates to, Coordinates from, AbstractEntity caller) {
+				return false;
+			}
 			
 		};
 		

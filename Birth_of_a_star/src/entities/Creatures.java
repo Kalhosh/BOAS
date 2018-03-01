@@ -15,4 +15,11 @@ public class Creatures extends AbstractEntity{
 		
 	}
 
+	/**
+	 * @see entities.AbstractEntity#move(Movement)
+	 */
+	protected void move(Movement direction) {
+		
+	}
+
 }
