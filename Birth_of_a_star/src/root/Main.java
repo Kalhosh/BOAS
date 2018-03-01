@@ -3,7 +3,6 @@ package root;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.JFrame;
@@ -18,6 +17,7 @@ import map_exceptions.OutOfMapBoundsException;
 import maps.AbstractMap;
 import path_exceptions.PathIndexOutOfBoundsException;
 import resources.AbstractGround;
+import resources.Coordinates;
 
 public class Main {
 
@@ -79,8 +79,8 @@ public class Main {
 		
 		Pathfinding p = new Pathfinding(m);
 		
-		Point2D p1 = new Point2D.Double(5, 5);
-		Point2D p2 = new Point2D.Double(taille - 5, taille - 5);
+		Coordinates p1 = new Coordinates(5, 5);
+		Coordinates p2 = new Coordinates(taille - 5, taille - 5);
 		
 		// affichage
 		
@@ -96,7 +96,7 @@ public class Main {
 				
 				Graphics2D g2d = (Graphics2D)g;
 				
-				Point2D bufferPoint = new Point2D.Double();
+				Coordinates bufferPoint = new Coordinates();
 				Rectangle2D bufferRectangle = new Rectangle2D.Double();
 				
 				// cases de la carte
@@ -104,7 +104,7 @@ public class Main {
 					
 					for(int j=0; j < taille; j++) {
 						
-						bufferPoint.setLocation(i, j);
+						bufferPoint.setCoordinates(i, j);
 						if(m.canPassThrough(bufferPoint))
 							g2d.setPaint(Color.WHITE);
 						else
@@ -156,7 +156,7 @@ public class Main {
 				
 				while(path1 != null && path1.hastNext()) {
 					
-					Point2D p = null;
+					Coordinates p = null;
 					try {
 						
 						p = path1.next();
@@ -166,8 +166,8 @@ public class Main {
 					}
 					
 					if(p != null) {
-						int x = (int) p.getX();
-						int y = (int) p.getY();
+						int x = p.getX();
+						int y = p.getY();
 						
 						bufferRectangle.setRect(x*size, y*size, size, size);
 						
@@ -181,7 +181,7 @@ public class Main {
 				
 				while(path2 != null && path2.hastNext()) {
 					
-					Point2D p = null;
+					Coordinates p = null;
 					try {
 						
 						p = path2.next();
@@ -191,8 +191,8 @@ public class Main {
 					}
 					
 					if(p != null) {
-						int x = (int) p.getX();
-						int y = (int) p.getY();
+						int x = p.getX();
+						int y = p.getY();
 						
 						bufferRectangle.setRect(x*size, y*size, size, size);
 						
@@ -225,8 +225,8 @@ public class Main {
 		
 	}
 	
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) throws InvalidMapDimensionException, OutOfMapBoundsException {
+		testPathfinding();
 	}
 
 }

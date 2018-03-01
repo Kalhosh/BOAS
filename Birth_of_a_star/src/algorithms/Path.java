@@ -1,16 +1,16 @@
 package algorithms;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import path_exceptions.PathIndexOutOfBoundsException;
+import resources.Coordinates;
 
 /**
  * @author BIZOT Loïc
  */
 public class Path {
 
-	private ArrayList<Point2D> coordinates;
+	private ArrayList<Coordinates> coordinates;
 	private int iterator;
 	
 	public Path() {
@@ -29,7 +29,7 @@ public class Path {
 	 * @return le point a l'index iterator
 	 * @throws PathIndexOutOfBoundsException
 	 */
-	private Point2D current() throws PathIndexOutOfBoundsException {
+	private Coordinates current() throws PathIndexOutOfBoundsException {
 		
 		if(iterator >= coordinates.size())
 			throw new PathIndexOutOfBoundsException(); 
@@ -42,9 +42,9 @@ public class Path {
 	 * @return le point a l'index iterator, incremente ensuite l'iterateur
 	 * @throws PathIndexOutOfBoundsException appel de next en fin de liste
 	 */
-	public Point2D next() throws PathIndexOutOfBoundsException {
+	public Coordinates next() throws PathIndexOutOfBoundsException {
 		
-		Point2D res = current();
+		Coordinates res = current();
 		iterator ++;
 		
 		return res;
@@ -62,7 +62,7 @@ public class Path {
 	 * <p> accessible qu'au package </p>
 	 * @param point point a ajouter a la collection
 	 */
-	protected void add(Point2D point) {
+	protected void add(Coordinates point) {
 		coordinates.add(0,point);
 	}
 	

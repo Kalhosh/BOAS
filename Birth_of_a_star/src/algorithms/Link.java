@@ -1,6 +1,6 @@
 package algorithms;
 
-import java.awt.geom.Point2D;
+import resources.Coordinates;
 
 /**
  * @author BIZOT Loïc
@@ -11,14 +11,14 @@ import java.awt.geom.Point2D;
 public class Link{
 	
 	private Link previousCoord;
-	private Point2D currentCoord;
+	private Coordinates currentCoord;
 	private int index;
 	
 	/**
 	 * @param previousCoord case precedente
 	 * @param currentCoord case actuelle
 	 */
-	protected Link(Link previousCoord, Point2D currentCoord) {
+	protected Link(Link previousCoord, Coordinates currentCoord) {
 		
 		this.previousCoord = previousCoord;
 		this.currentCoord = currentCoord;
@@ -36,7 +36,7 @@ public class Link{
 	/**
 	 * @return la coordonnee courante
 	 */
-	public Point2D getCurrent() {
+	public Coordinates getCurrent() {
 		return currentCoord;
 	}
 	

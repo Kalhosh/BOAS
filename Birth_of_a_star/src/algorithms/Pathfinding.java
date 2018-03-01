@@ -1,10 +1,10 @@
 package algorithms;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import map_exceptions.OutOfMapBoundsException;
+import resources.Coordinates;
 
 /**
  * @author BIZOT Loïc
@@ -30,7 +30,7 @@ public class Pathfinding {
 	 * @return le chemin le plus court entre begin et end
 	 * @throws OutOfMapBoundsException l'une des cases begin ou end est en dehors de la carte 
 	 */
-	public Path findShortestPath(Point2D begin, Point2D end, OptimiserTag tag) throws OutOfMapBoundsException {
+	public Path findShortestPath(Coordinates begin, Coordinates end, OptimiserTag tag) throws OutOfMapBoundsException {
 		
 		// arret brutal lors de l'invalidite de la coordonnee de depart
 		if(!colisisonHandler.isInBounds(begin)) {
@@ -49,7 +49,7 @@ public class Pathfinding {
 		// initialisation du parcour
 		
 		// point de depart
-		Point2D currentPointResearch = begin;
+		Coordinates currentPointResearch = begin;
 		
 		// tableau de cases deja atteintes
 		int width = colisisonHandler.getWidth();
@@ -64,12 +64,8 @@ public class Pathfinding {
 		
 		// pile de traitement
 		
-		ArrayList<Link> orderPile = new ArrayList<>();
-		/*if(tag == OptimiserTag.NONE)
-			orderPile = new ArrayDeque<>();
-		else
-			orderPile = new PriorityQueue<>(new DistanceOptimiser(end));
-		*/
+		ArrayList<Link> orderPile = new ArrayList<>(); 
+		
 		Link firstLink = new Link(null,begin);
 		orderPile.add(firstLink);
 		
@@ -93,9 +89,9 @@ public class Pathfinding {
 				
 				// obtention d'un voisin (trigonometrie)
 				double angle = Math.PI*i/2;
-				double newX = currentX + Math.cos(angle);
-				double newY = currentY + Math.sin(angle);
-				Point2D neighbour = new Point2D.Double(newX, newY); 
+				int newX = (int) (currentX + Math.cos(angle));
+				int newY = (int) (currentY + Math.sin(angle));
+				Coordinates neighbour = new Coordinates(newX, newY); 
 				
 				// coordonees entieres 
 				int x = (int)neighbour.getX();

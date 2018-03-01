@@ -1,18 +1,18 @@
 package algorithms;
 
-import java.awt.geom.Point2D;
+import resources.Coordinates;
 
 /**
  * @author BIZOT Loïc
  */
 public class DistanceOptimiser implements PathOptimiser{
 
-	private Point2D end;
+	private Coordinates end;
 	
 	/**
 	 * @param end point final du pathfinding
 	 */
-	public DistanceOptimiser(Point2D end) {
+	public DistanceOptimiser(Coordinates end) {
 		
 		this.end = end;
 		

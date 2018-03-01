@@ -9,6 +9,7 @@ import algorithms.ColisionHandler;
 import entities.IMap;
 import map_exceptions.InvalidMapDimensionException;
 import resources.AbstractGround;
+import resources.Coordinates;
 import resources.DisplayInfo;
 
 /**
@@ -45,10 +46,10 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 	/**
 	 * @see algorithms.ColisionHandler#canPassThrough(Point2D)
 	 * */
-	public boolean canPassThrough(Point2D coord){
+	public boolean canPassThrough(Coordinates coord){
 		
-		int x = (int) coord.getX();
-		int y = (int) coord.getY();
+		int x = coord.getX();
+		int y = coord.getY();
 		
 		if(isInBounds(coord))
 			return ground[x][y].canPassThrough();
@@ -60,10 +61,10 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 	/**
 	 * @see algorithms.ColisionHandler#isInBounds(Point2D)
 	 */
-	public boolean isInBounds(Point2D coord) {
+	public boolean isInBounds(Coordinates coord) {
 		
-		int x = (int)coord.getX();
-		int y = (int)coord.getY();
+		int x = coord.getX();
+		int y = coord.getY();
 		
 		boolean res = x >= 0 && x < X;
 		res = res &&  y >= 0 && y < Y;
