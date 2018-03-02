@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import algorithms.OptimiserTag;
 import algorithms.Path;
 import algorithms.Pathfinding;
-import entities.AbstractEntity;
 import map_exceptions.InvalidMapDimensionException;
 import map_exceptions.OutOfMapBoundsException;
 import maps.AbstractMap;
@@ -30,7 +29,6 @@ public class Main {
 		
 		AbstractGround obstacle = new AbstractGround() {
 			
-			@Override
 			public boolean canPassThrough() {
 				return false;
 			}
@@ -39,15 +37,14 @@ public class Main {
 		
 		AbstractGround vide = new AbstractGround() {
 			
-			@Override
 			public boolean canPassThrough() {
 				return true;
 			}
+			
 		};
 		
 		AbstractMap m = new AbstractMap(taille,taille) {
 
-			@Override
 			public void fillMap() {
 				
 				for(int i = 0; i < getWidth(); i++) {
@@ -63,21 +60,6 @@ public class Main {
 					
 				}
 					
-			}
-
-			@Override
-			public void addEntity(AbstractEntity e) {
-				
-			}
-
-			@Override
-			public void removeEntity(AbstractEntity e) {
-				
-			}
-
-			@Override
-			public boolean requestPassThrough(Coordinates to, Coordinates from, AbstractEntity caller) {
-				return false;
 			}
 			
 		};
@@ -230,8 +212,8 @@ public class Main {
 		
 	}
 	
-	public static void main(String[] args) throws InvalidMapDimensionException, OutOfMapBoundsException {
-		testPathfinding();
+	public static void main(String[] args){
+		
 	}
 
 }

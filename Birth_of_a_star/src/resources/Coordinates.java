@@ -28,6 +28,15 @@ public class Coordinates {
 	}
 	
 	/**
+	 * <p> constructeur par recopie </p>
+	 * @param origine le point a copier
+	 */
+	public Coordinates(Coordinates origine) {
+		x = origine.x;
+		y = origine.y;
+	}
+
+	/**
 	 * @return l'abscisse de la case
 	 */
 	public int getX() {

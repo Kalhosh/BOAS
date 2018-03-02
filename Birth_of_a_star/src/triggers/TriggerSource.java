@@ -16,10 +16,18 @@ public class TriggerSource {
 	
 	/**
 	 * <p> ajoute une cible a declencher </p> 
-	 * @param t : une cible de declencheur a ajouter
+	 * @param t une cible de declencheur a ajouter
 	 * */
 	void addTarget(TriggerTarget t) {
 		targets.add(t);
+	}
+	
+	/**
+	 * <p> enlève une cible a declencher </p> 
+	 * @param t une cible de declencheur a enlever
+	 * */
+	void removeTarget(TriggerTarget t) {
+		targets.remove(t);
 	}
 	
 	/**

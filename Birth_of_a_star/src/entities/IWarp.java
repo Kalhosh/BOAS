@@ -1,8 +1,7 @@
 package entities;
 
-import java.awt.geom.Rectangle2D;
-
 import resources.Coordinates;
+import resources.Rectangle;
 
 public interface IWarp {
 
@@ -19,6 +18,6 @@ public interface IWarp {
 	/**
 	 * @return la zone de la carte origine sur laquelle ss'effectue le warp
 	 */
-	Rectangle2D getWarpArea();
+	Rectangle getWarpArea();
 	
 }

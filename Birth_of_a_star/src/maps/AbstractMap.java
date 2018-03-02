@@ -6,6 +6,7 @@ import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
 import algorithms.ColisionHandler;
+import entities.AbstractEntity;
 import entities.IMap;
 import map_exceptions.InvalidMapDimensionException;
 import resources.AbstractGround;
@@ -19,6 +20,7 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 
 	private AbstractGround ground[][];
 	private ArrayList<Warp> warps;
+	private ArrayList<AbstractEntity> entities;
 	private int X;
 	private int Y;
 	
@@ -74,6 +76,20 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 	}
 	
 	/**
+	 * @see algorithms.ColisionHandler#getWidth()
+	 */
+	public int getWidth() {
+		return X;
+	}
+
+	/**
+	 * @see algorithms.ColisionHandler#getHeight()
+	 */
+	public int getHeight() {
+		return Y;
+	}
+	
+	/**
 	 * <p> Affiche une portion de la carte, en fonction de la vue </p>
 	 * @param info centre et zoom de la camera
 	 * @param g contexte graphique
@@ -99,20 +115,6 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 		}
 		
 	}
-
-	/**
-	 * @see algorithms.ColisionHandler#getWidth()
-	 */
-	public int getWidth() {
-		return X;
-	}
-
-	/**
-	 * @see algorithms.ColisionHandler#getHeight()
-	 */
-	public int getHeight() {
-		return Y;
-	}
 	
 	/**
 	 * <p> remplissage de la map, a redefinir dans les classes filles </p>
@@ -126,8 +128,53 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 	 * @param y la coordonnee y
 	 */
 	public void addGround(AbstractGround g, int x, int y) {
-		
 		this.ground[x][y] = g;
+	}
+	
+	/**
+	 * @see entities.IMap#addEntity(AbstractEntity)
+	 */
+	public void addEntity(AbstractEntity e) {
+		this.entities.add(e);
+	}
+
+	/**
+	 * @see entities.IMap#removeEntity(AbstractEntity)
+	 */
+	public void removeEntity(AbstractEntity e) {
+		this.entities.remove(e);
+	}
+	
+	/**
+	 * @see entities.IMap#requestPassThrough(Coordinates, Coordinates, AbstractEntity)
+	 */
+	public boolean requestPassThrough(Coordinates to, Coordinates from, AbstractEntity caller) {
+		return false;
+	}
+
+	/**
+	 * @see entities.IMap#requestWarp(Coordinates, AbstractEntity)
+	 */
+	public void requestWarp(Coordinates coords, AbstractEntity caller) {
+		
+		boolean found = false;
+		int i = 0; 
+		Warp p = null;
+		
+		// recherche d'un warp
+		while(i < warps.size() && !found) {
+			
+			p = warps.get(i);
+			
+			if(p.getWarpArea().contains(coords)) 
+				found = true;
+			
+			i++;
+		}
+		
+		// si warp trouvé, warp !
+		if(found) 
+			caller.warp(p);
 		
 	}
 	

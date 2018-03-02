@@ -22,4 +22,10 @@ public interface IMap {
 	 */
 	public boolean requestPassThrough(Coordinates to, Coordinates from, AbstractEntity caller);
 	
+	/**
+	 * <p> appelée à chaque pas, regarde si l'entitée est sur un warp </p>
+	 * @param caller l'entité appelante
+	 */
+	public void requestWarp(Coordinates coords, AbstractEntity caller);
+	
 }
