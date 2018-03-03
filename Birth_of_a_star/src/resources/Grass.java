@@ -21,8 +21,6 @@ public class Grass extends AbstractGround{
 	 * @see resources.Displayable#display(DisplayInfo, Point2D, Graphics2D, ImageObserver)
 	 */
 	public void display(DisplayInfo info, Coordinates position, Graphics2D g, ImageObserver io) {
-
-		System.out.println("Affichage");
 		
 		if(!charged) {
 			

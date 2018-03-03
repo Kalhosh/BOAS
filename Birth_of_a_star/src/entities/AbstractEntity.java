@@ -1,19 +1,23 @@
 package entities;
 
+import java.awt.event.KeyEvent;
+
+import controls.IControlled;
+import display_engine.IFollowable;
 import resources.Coordinates;
 import resources.Displayable;
 
 /**
  * @author BIZOT Loïc
  */
-public abstract class AbstractEntity implements Displayable{
+public abstract class AbstractEntity implements Displayable, IFollowable, IControlled{
 
 	protected Coordinates coords;
 	private IMap area;
 	
 	public AbstractEntity(Coordinates coords, IMap area) {
 		
-		this.coords = new Coordinates(coords);
+		this.coords = new Coordinates(coords.getX()*32,coords.getY()*32);
 		this.area = area;
 		
 	}
@@ -58,5 +62,34 @@ public abstract class AbstractEntity implements Displayable{
 	 * @param direction la direction dans laquelle se déplacer
 	 */
 	protected abstract void move(Movement direction);
+	
+	public int getX() {
+		return coords.getX();
+	}
+	
+	public int getY() {
+		return coords.getY();
+	}
+	
+	public void ActionKey(int key) {
+		
+		switch(key) {
+		
+		case KeyEvent.VK_Z:
+			move(Movement.MOVE_UP);
+			break;
+		case KeyEvent.VK_Q:
+			move(Movement.MOVE_LEFT);
+			break;
+		case KeyEvent.VK_S:
+			move(Movement.MOVE_DOWN);
+			break;
+		case KeyEvent.VK_D:
+			move(Movement.MOVE_RIGHT);
+			break;
+		
+		}
+		
+	}
 	
 }

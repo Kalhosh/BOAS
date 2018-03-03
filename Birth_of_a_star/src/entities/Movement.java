@@ -3,8 +3,8 @@ package entities;
 public enum Movement {
 
 	MOVE_RIGHT,
-	MOVE_UP,
+	MOVE_DOWN,
 	MOVE_LEFT,
-	MOVE_DOWN
+	MOVE_UP
 	
 }

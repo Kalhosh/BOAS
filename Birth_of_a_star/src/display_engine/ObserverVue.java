@@ -11,13 +11,18 @@ public class ObserverVue implements DisplayInfo{
 	private int y;
 	private int scale;
 	
+	private IFollowable followed;
+	
 	private IWindow windowAffectedView;
 	
 	public ObserverVue(IWindow w) {
-		x = 9;
-		y = 9;
+		
+		x = -1;
+		y = -1;
 		scale = 128;
+		followed = null;
 		windowAffectedView = w;
+		
 	}
 	
 	public void setCoord(int x, int y) {
@@ -31,12 +36,26 @@ public class ObserverVue implements DisplayInfo{
 
 	@Override // form DisplayInfo
 	public int getViewX() {
-		return x;
+		
+		if(followed != null)
+			return followed.getX();
+		else
+			return x;
+		
 	}
 
 	@Override // form DisplayInfo
 	public int getViewY() {
-		return y;
+		
+		if(followed != null)
+			return followed.getY();
+		else
+			return y;
+		
+	}
+	
+	public void follow(IFollowable f) {
+		this.followed = f;
 	}
 
 	@Override // form DisplayInfo

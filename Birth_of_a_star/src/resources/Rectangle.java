@@ -90,6 +90,10 @@ public class Rectangle {
 		
 	}
 	
+	public void move(int x, int y) {
+		this.origine.setCoordinates(x, y);
+	}
+	
 	public int getX() {
 		return origine.getX();
 	}

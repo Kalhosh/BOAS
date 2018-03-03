@@ -9,9 +9,18 @@ import java.awt.event.KeyListener;
  */
 public class BasicControls{
 	
+	protected IControlled controlled;
+	
+	public void setIControlled(IControlled c) {
+		this.controlled = c;
+	}
+	
 	public static class ControlsKeyBoard extends BasicControls implements KeyListener{
 
 		public void keyPressed(KeyEvent arg0) {
+			
+			System.out.println("Lul");
+			controlled.ActionKey(arg0.getKeyCode());
 			
 		}
 

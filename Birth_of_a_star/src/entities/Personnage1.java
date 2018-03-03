@@ -14,8 +14,12 @@ import resources.Rectangle;
 
 public class Personnage1 extends Human{
 
+	private MovementAnimation animation;
+	private Rectangle etat;
+	
 	public Personnage1(Coordinates coords, IMap area) {
 		super(coords, area);
+		etat = new Rectangle(0, 0, 32, 32);
 	}
 
 	static boolean charged = false;
@@ -23,8 +27,6 @@ public class Personnage1 extends Human{
 	
 	@Override
 	public void display(DisplayInfo info, Coordinates position, Graphics2D g, ImageObserver io) {
-
-		System.out.println("Affichage");
 		
 		if(!charged) {
 			
@@ -40,7 +42,7 @@ public class Personnage1 extends Human{
 		}
 		
 		if(sprite != null)
-			info.displayImage(sprite, coords, g, new Rectangle(0,0,32,32), io);
+			info.displayImage(sprite, coords, g, etat, io);
 		else
 			System.err.println("Erreur image");
 		
@@ -48,7 +50,69 @@ public class Personnage1 extends Human{
 
 	@Override
 	protected void move(Movement direction) {
-		// TODO Auto-generated method stub
+		
+		if(animation == null || !animation.running) {
+			
+			animation = new MovementAnimation(direction);
+			Thread t = new Thread(animation);
+			
+			t.start();
+			
+		}
+		
+	}
+	
+	public int indexZImage(Movement m) {
+		switch(m) {
+		case MOVE_DOWN:
+			return 0;
+		case MOVE_LEFT:
+			return 3;
+		case MOVE_RIGHT:
+			return 2;
+		case MOVE_UP:
+			return 1;
+		default:
+			break;
+		}
+		return 0;
+	}
+	
+	private class MovementAnimation implements Runnable{
+		
+		Movement direction;
+		boolean running;
+		
+		public MovementAnimation(Movement direction) {
+			this.direction = direction;
+			this.running = false;
+		}
+		
+		public void run() {
+			
+			running = true;
+			
+			int dx = (int) Math.cos(direction.ordinal()*Math.PI/2);
+			int dy = (int) Math.sin(direction.ordinal()*Math.PI/2);
+			
+			for(int i = 0; i < 32; i ++) {
+				
+				etat.move(i/8*32, 32*indexZImage(direction));
+				
+				try {
+					Thread.sleep(20);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				coords.add(dx, dy);
+				
+			}
+			
+			etat.move(0, 32*indexZImage(direction));
+			
+			running = false;
+			
+		}
 		
 	}
 

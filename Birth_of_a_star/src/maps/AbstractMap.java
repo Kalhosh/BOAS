@@ -103,7 +103,7 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 		// variable d'optimisation
 		Coordinates pos = new Coordinates();
 		
-		// calcul de la portion a afficher
+		// calcul de la portion a afficher (non optimisé pour l'instant)
 		int debutX = 0;
 		int debutY = 0;
 		int finX = X;
@@ -112,7 +112,7 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 		// affichage du sol
 		for(int i = debutX; i < finX; i ++) {
 			for(int j = debutY; j < finY; j++) {
-				pos.setCoordinates(i, j);
+				pos.setCoordinates(i*32, j*32);
 				ground[i][j].display(info, pos, g, io);
 			}
 		}

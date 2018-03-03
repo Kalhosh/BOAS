@@ -82,6 +82,13 @@ public class Coordinates {
 		
 	}
 	
+	public void add(int x, int y) {
+		
+		this.x += x;
+		this.y += y;
+		
+	}
+	
 	public boolean equals(Object other) {
 		
 		if( !(other instanceof Coordinates))

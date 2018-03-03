@@ -13,10 +13,13 @@ import javax.swing.JPanel;
 import algorithms.OptimiserTag;
 import algorithms.Path;
 import algorithms.Pathfinding;
+import controls.BasicControls;
 import display_modes.GamePanel;
+import entities.Personnage1;
 import map_exceptions.InvalidMapDimensionException;
 import map_exceptions.OutOfMapBoundsException;
 import maps.AbstractMap;
+import maps.TestMap;
 import path_exceptions.PathIndexOutOfBoundsException;
 import resources.AbstractGround;
 import resources.Coordinates;
@@ -226,16 +229,49 @@ public class Main {
 		
 	}
 	
-	public static void main(String[] args) throws IOException, InvalidMapDimensionException{
+	public static void main(String[] args) throws IOException, InvalidMapDimensionException, InterruptedException{
 		
 		JFrame test = new JFrame();
-		GamePanel gp = new GamePanel();
+		
+		TestMap m = new TestMap(20,20);
+		GamePanel gp = new GamePanel(m);
+		
+		Personnage1 p = new Personnage1(new Coordinates(9,9),m);
+		gp.setViewOn(p);
+		m.addEntity(p);
+		
+		BasicControls.ControlsKeyBoard bd = new BasicControls.ControlsKeyBoard();
+		bd.setIControlled(p);
+		
+		test.addKeyListener(bd);
+		
 		test.setContentPane(gp);
 		test.setTitle("Birth Of a Star");
 		test.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		test.setSize(500,500);
 		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		test.setVisible(true);
+		
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				
+				while(true) {
+					
+					try {
+						Thread.sleep(20);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					test.repaint();
+					
+				}
+			}
+			
+		});
+		
+		t.start();
 		
 	}
 
