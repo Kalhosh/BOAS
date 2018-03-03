@@ -90,4 +90,20 @@ public class Rectangle {
 		
 	}
 	
+	public int getX() {
+		return origine.getX();
+	}
+	
+	public int getY() {
+		return origine.getY();
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+	
 }

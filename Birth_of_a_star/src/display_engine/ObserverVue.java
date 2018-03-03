@@ -11,6 +11,8 @@ public class ObserverVue implements DisplayInfo{
 	private int y;
 	private int scale;
 	
+	private IWindow windowAffectedView;
+	
 	public ObserverVue() {
 		x = -1;
 		y = -1;
@@ -39,6 +41,16 @@ public class ObserverVue implements DisplayInfo{
 	@Override // form DisplayInfo
 	public int getScale() {
 		return scale;
+	}
+
+	@Override
+	public int getWindowWidth() {
+		return windowAffectedView.getWindowWidth();
+	}
+
+	@Override
+	public int getWindowHeight() {
+		return windowAffectedView.getWindowHeight();
 	}
 	
 }

@@ -8,7 +8,7 @@ import resources.Displayable;
  */
 public abstract class AbstractEntity implements Displayable{
 
-	private Coordinates coords;
+	protected Coordinates coords;
 	private IMap area;
 	
 	/**

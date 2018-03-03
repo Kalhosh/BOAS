@@ -98,7 +98,7 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 	public void displayMap(DisplayInfo info, Graphics2D g, ImageObserver io) {
 		
 		// variable d'optimisation
-		Point2D pos = new Point2D.Double();
+		Coordinates pos = new Coordinates();
 		
 		// calcul de la portion a afficher
 		int debutX = 0;
@@ -109,7 +109,7 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 		// affichage du sol
 		for(int i = debutX; i < finX; i ++) {
 			for(int j = debutY; j < finY; j++) {
-				pos.setLocation(i, j);
+				pos.setCoordinates(i, j);
 				ground[i][j].display(info, pos, g, io);
 			}
 		}

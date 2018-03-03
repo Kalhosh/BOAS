@@ -1,25 +1,10 @@
 package entities;
 
-import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
-import java.awt.image.ImageObserver;
+/**
+ * @author BIZOT Loïc
+ */
+public abstract class Human extends AbstractEntity{
 
-import resources.DisplayInfo;
-
-public class Human extends AbstractEntity{
-
-	/**
-	 * @see resources.Displayable#display(DisplayInfo, Point2D, Graphics2D, ImageObserver)
-	 */
-	public void display(DisplayInfo info, Point2D position, Graphics2D g, ImageObserver io) {
-		
-	}
-
-	/**
-	 * @see entities.AbstractEntity#move(Movement)
-	 */
-	protected void move(Movement direction) {
-		
-	}
+	
 
 }

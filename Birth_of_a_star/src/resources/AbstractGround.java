@@ -12,7 +12,7 @@ public abstract class AbstractGround implements Displayable{
 	/**
 	 * @see resources.Displayable#display(DisplayInfo, Point2D, Graphics2D, ImageObserver)
 	 */
-	public void display(DisplayInfo info, Point2D position, Graphics2D g, ImageObserver io) {
+	public void display(DisplayInfo info, Coordinates position, Graphics2D g, ImageObserver io) {
 
 	}
 	
