@@ -36,6 +36,9 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 		this.X = X;
 		this.Y = Y;
 		
+		this.warps = new ArrayList<>();
+		this.entities = new ArrayList<>();
+		
 		if(X > 0 && Y > 0)
 			ground = new AbstractGround[X][Y];
 		else
@@ -113,6 +116,9 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 				ground[i][j].display(info, pos, g, io);
 			}
 		}
+		
+		for(AbstractEntity e : entities)
+			e.display(info, null, g, io);
 		
 	}
 	

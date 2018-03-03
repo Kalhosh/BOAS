@@ -38,8 +38,8 @@ public interface DisplayInfo {
 			int left_top_corner_posY = position.getY()*getScale()/32;
 
 			//decalage de la postion due à la caméra
-			left_top_corner_posX += getWindowWidth()/2 - getViewX()*getScale();
-			left_top_corner_posY += getWindowHeight()/2 - getViewY()*getScale();
+			left_top_corner_posX += getWindowWidth()/2 - getViewX()*getScale()/32;
+			left_top_corner_posY += getWindowHeight()/2 - getViewY()*getScale()/32;
 			
 			g.drawImage(image, left_top_corner_posX, left_top_corner_posY, left_top_corner_posX + getScale(), left_top_corner_posY + getScale(), 
 					selection.getX(), selection.getY(), selection.getX() + selection.getWidth(), selection.getY() + selection.getHeight(), io);

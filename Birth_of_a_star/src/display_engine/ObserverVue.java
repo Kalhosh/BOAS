@@ -13,10 +13,11 @@ public class ObserverVue implements DisplayInfo{
 	
 	private IWindow windowAffectedView;
 	
-	public ObserverVue() {
-		x = -1;
-		y = -1;
-		scale = -1;
+	public ObserverVue(IWindow w) {
+		x = 9;
+		y = 9;
+		scale = 64;
+		windowAffectedView = w;
 	}
 	
 	public void setCoord(int x, int y) {
@@ -43,12 +44,12 @@ public class ObserverVue implements DisplayInfo{
 		return scale;
 	}
 
-	@Override
+	@Override // form DisplayInfo
 	public int getWindowWidth() {
 		return windowAffectedView.getWindowWidth();
 	}
 
-	@Override
+	@Override // form DisplayInfo
 	public int getWindowHeight() {
 		return windowAffectedView.getWindowHeight();
 	}

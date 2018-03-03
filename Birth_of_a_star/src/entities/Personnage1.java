@@ -14,12 +14,18 @@ import resources.Rectangle;
 
 public class Personnage1 extends Human{
 
+	public Personnage1(Coordinates coords, IMap area) {
+		super(coords, area);
+	}
+
 	static boolean charged = false;
 	static BufferedImage sprite = null;
 	
 	@Override
 	public void display(DisplayInfo info, Coordinates position, Graphics2D g, ImageObserver io) {
 
+		System.out.println("Affichage");
+		
 		if(!charged) {
 			
 			try {
@@ -34,7 +40,7 @@ public class Personnage1 extends Human{
 		}
 		
 		if(sprite != null)
-			info.displayImage(sprite, position, g, new Rectangle(coords,32,32), io);
+			info.displayImage(sprite, coords, g, new Rectangle(0,0,32,32), io);
 		else
 			System.err.println("Erreur image");
 		

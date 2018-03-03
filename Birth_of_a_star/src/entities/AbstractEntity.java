@@ -11,6 +11,13 @@ public abstract class AbstractEntity implements Displayable{
 	protected Coordinates coords;
 	private IMap area;
 	
+	public AbstractEntity(Coordinates coords, IMap area) {
+		
+		this.coords = new Coordinates(coords);
+		this.area = area;
+		
+	}
+	
 	/**
 	 * <p> appelle lors du passage d'une entite dans un warp </p>
 	 * <p> met l'entite sur la carte au bout du warp, aux coordonnees du bout du warp </p>

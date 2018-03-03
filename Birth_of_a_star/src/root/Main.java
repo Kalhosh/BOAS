@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.ImageObserver;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -12,12 +13,14 @@ import javax.swing.JPanel;
 import algorithms.OptimiserTag;
 import algorithms.Path;
 import algorithms.Pathfinding;
+import display_modes.GamePanel;
 import map_exceptions.InvalidMapDimensionException;
 import map_exceptions.OutOfMapBoundsException;
 import maps.AbstractMap;
 import path_exceptions.PathIndexOutOfBoundsException;
 import resources.AbstractGround;
 import resources.Coordinates;
+import resources.DisplayInfo;
 
 public class Main {
 
@@ -33,6 +36,11 @@ public class Main {
 			public boolean canPassThrough() {
 				return false;
 			}
+
+			@Override
+			public void display(DisplayInfo info, Coordinates position, Graphics2D g, ImageObserver io) {
+				
+			}
 			
 		};
 		
@@ -40,6 +48,11 @@ public class Main {
 			
 			public boolean canPassThrough() {
 				return true;
+			}
+
+			@Override
+			public void display(DisplayInfo info, Coordinates position, Graphics2D g, ImageObserver io) {
+				
 			}
 			
 		};
@@ -213,7 +226,14 @@ public class Main {
 		
 	}
 	
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException, InvalidMapDimensionException{
+		
+		JFrame test = new JFrame();
+		GamePanel gp = new GamePanel();
+		test.setContentPane(gp);
+		test.setSize(500,500);
+		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		test.setVisible(true);
 		
 	}
 
