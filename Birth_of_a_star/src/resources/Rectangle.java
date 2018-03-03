@@ -90,22 +90,39 @@ public class Rectangle {
 		
 	}
 	
+	/**
+	 * <p> replace l'origine du rectangle aux coordonnées (x, y)
+	 * @param x la coordonnée x du nouveau point d'origine
+	 * @param y la coordonnée y du nouveau point d'origine
+	 */
 	public void move(int x, int y) {
 		this.origine.setCoordinates(x, y);
 	}
 	
+	/**
+	 * @return la coordonnée x du point d'origine
+	 */
 	public int getX() {
 		return origine.getX();
 	}
 	
+	/**
+	 * @return la coordonnée y du point d'origine
+	 */
 	public int getY() {
 		return origine.getY();
 	}
 
+	/**
+	 * @return la largeur du rectangle
+	 */
 	public int getWidth() {
 		return width;
 	}
 
+	/**
+	 * @return la hauteur du rectangle
+	 */
 	public int getHeight() {
 		return height;
 	}

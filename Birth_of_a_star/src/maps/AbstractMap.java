@@ -103,20 +103,21 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 		// variable d'optimisation
 		Coordinates pos = new Coordinates();
 		
-		// calcul de la portion a afficher (non optimisé pour l'instant)
-		int debutX = 0;
-		int debutY = 0;
-		int finX = X;
-		int finY = Y;
+		// calcul de la portion a afficher
+		int beginX = Math.max(info.getViewX()/32 - (info.getWindowWidth()/2)/info.getScale() - 1,0);
+		int beginY = Math.max(info.getViewY()/32 - (info.getWindowHeight()/2)/info.getScale() - 1,0);
+		int endX = Math.min(beginX + info.getWindowWidth()/info.getScale() + 3,X);
+		int endY = Math.min(beginY + info.getWindowHeight()/info.getScale() + 3,Y);
 		
 		// affichage du sol
-		for(int i = debutX; i < finX; i ++) {
-			for(int j = debutY; j < finY; j++) {
+		for(int i = beginX; i < endX; i ++) {
+			for(int j = beginY; j < endY; j++) {
 				pos.setCoordinates(i*32, j*32);
 				ground[i][j].display(info, pos, g, io);
 			}
 		}
 		
+		// affichage entitées
 		for(AbstractEntity e : entities)
 			e.display(info, null, g, io);
 		

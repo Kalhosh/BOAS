@@ -82,6 +82,11 @@ public class Coordinates {
 		
 	}
 	
+	/**
+	 * <p> addition entre 2 points </p>
+	 * @param x la valeur de la coordonnée x du point à ajouter
+	 * @param y la valeur de la coordonnée y du point à ajouter
+	 */
 	public void add(int x, int y) {
 		
 		this.x += x;

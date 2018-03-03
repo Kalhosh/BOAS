@@ -15,6 +15,11 @@ public abstract class AbstractEntity implements Displayable, IFollowable, IContr
 	protected Coordinates coords;
 	private IMap area;
 	
+	/**
+	 * <p> Constructeur AbstractEntity </p>
+	 * @param coords les coordonnées d'origine de l'entité
+	 * @param area la carte d'origine de l'entité
+	 */
 	public AbstractEntity(Coordinates coords, IMap area) {
 		
 		this.coords = new Coordinates(coords.getX()*32,coords.getY()*32);
@@ -63,14 +68,23 @@ public abstract class AbstractEntity implements Displayable, IFollowable, IContr
 	 */
 	protected abstract void move(Movement direction);
 	
+	/**
+	 * @see display_engine.IFollowable#getX()
+	 */
 	public int getX() {
 		return coords.getX();
 	}
 	
+	/**
+	 * @see display_engine.IFollowable#getY()
+	 */
 	public int getY() {
 		return coords.getY();
 	}
 	
+	/**
+	 * @see controls.IControlled#ActionKey(int)
+	 */
 	public void ActionKey(int key) {
 		
 		switch(key) {

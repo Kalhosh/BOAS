@@ -3,6 +3,9 @@ package display_engine;
 import java.awt.image.BufferedImage;
 import java.util.TreeMap;
 
+/**
+ * @author BIZOT Loïc
+ */
 public interface ImageInit {
 
 	boolean init = false;

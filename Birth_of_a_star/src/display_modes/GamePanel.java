@@ -21,8 +21,14 @@ public class GamePanel extends JPanel implements IWindow{
 	private AbstractMap observedMap;
 	private ObserverVue observerVue;
 	
+	// test luminosité
 	private int time ;
 	
+	/**
+	 * <p> constructeur de GamePanel </p>
+	 * @param m la map qu'affiche le GamePanel
+	 * @throws InvalidMapDimensionException une map a été créée avec des dimensions invalides 
+	 */
 	public GamePanel(AbstractMap m) throws InvalidMapDimensionException {
 		
 		observerVue = new ObserverVue(this);
@@ -32,15 +38,21 @@ public class GamePanel extends JPanel implements IWindow{
 	}
 	
 	/**
-	 * 
+	 * serialVersion de la classe
 	 */
 	private static final long serialVersionUID = 8246084805909038066L;
 	
+	/**
+	 * <p> affiche la carte </p>
+	 */
 	public void paintComponent(Graphics g) {
 		
 		Graphics2D g2d = (Graphics2D)g;
+		
+		// affichage de la carte
 		observedMap.displayMap(observerVue, g2d, this);
 		
+		// affichage d'un claque semi-transparent pour la luminosité
 		double t = 1 - Math.pow(Math.cos(Math.PI*time/3600),2);
 		
 		int red = (int) (t*200);
@@ -55,16 +67,24 @@ public class GamePanel extends JPanel implements IWindow{
 		
 	}
 
-	@Override
+	/**
+	 * @see display_engine.IWindow#getWindowWidth()
+	 */
 	public int getWindowWidth() {
 		return this.getWidth();
 	}
 
-	@Override
+	/**
+	 * @see display_engine.IWindow#getWindowHeight()
+	 */
 	public int getWindowHeight() {
 		return this.getHeight();
 	}
 	
+	/**
+	 * <p> deffinit l'élément au millieu du panneau </p>
+	 * @param f l'élément qui doit être suivi par la vue
+	 */
 	public void setViewOn(IFollowable f) {
 		observerVue.follow(f);
 	}

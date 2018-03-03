@@ -15,11 +15,14 @@ public class BasicControls{
 		this.controlled = c;
 	}
 	
+	/**
+	 * <p> controlles clavier </p>
+	 * @author BIZOT Loïc
+	 */
 	public static class ControlsKeyBoard extends BasicControls implements KeyListener{
 
 		public void keyPressed(KeyEvent arg0) {
 			
-			System.out.println("Lul");
 			controlled.ActionKey(arg0.getKeyCode());
 			
 		}

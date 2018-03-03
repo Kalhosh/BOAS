@@ -62,6 +62,10 @@ public class Personnage1 extends Human{
 		
 	}
 	
+	/**
+	 * @param m le movement dernierement effectué par l'entité
+	 * @return l'indice Z de la position du sprite dans son image
+	 */
 	public int indexZImage(Movement m) {
 		switch(m) {
 		case MOVE_DOWN:
@@ -78,6 +82,9 @@ public class Personnage1 extends Human{
 		return 0;
 	}
 	
+	/**
+	 * @author BIZOT Loïc
+	 */
 	private class MovementAnimation implements Runnable{
 		
 		Movement direction;
@@ -90,26 +97,35 @@ public class Personnage1 extends Human{
 		
 		public void run() {
 			
+			// empeche tout autre déplacement de se faire
 			running = true;
 			
+			// calcul de la direction du pas
 			int dx = (int) Math.cos(direction.ordinal()*Math.PI/2);
 			int dy = (int) Math.sin(direction.ordinal()*Math.PI/2);
 			
+			// marche
 			for(int i = 0; i < 32; i ++) {
 				
+				// changement de la selection
 				etat.move(i/8*32, 32*indexZImage(direction));
 				
+				// attente entre chaque pas
 				try {
 					Thread.sleep(20);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+				
+				// changement de la coordonnée
 				coords.add(dx, dy);
 				
 			}
 			
+			// idle
 			etat.move(0, 32*indexZImage(direction));
 			
+			// on réautorise les animations
 			running = false;
 			
 		}
