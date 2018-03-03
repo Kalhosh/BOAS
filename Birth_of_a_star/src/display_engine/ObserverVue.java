@@ -16,7 +16,7 @@ public class ObserverVue implements DisplayInfo{
 	public ObserverVue(IWindow w) {
 		x = 9;
 		y = 9;
-		scale = 64;
+		scale = 128;
 		windowAffectedView = w;
 	}
 	

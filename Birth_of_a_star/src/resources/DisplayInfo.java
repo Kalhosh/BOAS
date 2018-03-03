@@ -34,12 +34,12 @@ public interface DisplayInfo {
 	default void displayImage(BufferedImage image, Coordinates position, Graphics2D g, Rectangle selection, ImageObserver io) {
 		
 		if(image != null){		
-			int left_top_corner_posX = position.getX()*getScale()/32;
-			int left_top_corner_posY = position.getY()*getScale()/32;
+			int left_top_corner_posX = position.getX()*getScale();
+			int left_top_corner_posY = position.getY()*getScale();
 
 			//decalage de la postion due à la caméra
-			left_top_corner_posX += getWindowWidth()/2 - getViewX()*getScale()/32;
-			left_top_corner_posY += getWindowHeight()/2 - getViewY()*getScale()/32;
+			left_top_corner_posX += getWindowWidth()/2 - getViewX()*getScale() - getScale()/2;
+			left_top_corner_posY += getWindowHeight()/2 - getViewY()*getScale() - getScale()/2;
 			
 			g.drawImage(image, left_top_corner_posX, left_top_corner_posY, left_top_corner_posX + getScale(), left_top_corner_posY + getScale(), 
 					selection.getX(), selection.getY(), selection.getX() + selection.getWidth(), selection.getY() + selection.getHeight(), io);

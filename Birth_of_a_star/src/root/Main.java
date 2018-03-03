@@ -231,6 +231,8 @@ public class Main {
 		JFrame test = new JFrame();
 		GamePanel gp = new GamePanel();
 		test.setContentPane(gp);
+		test.setTitle("Birth Of a Star");
+		test.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		test.setSize(500,500);
 		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		test.setVisible(true);
