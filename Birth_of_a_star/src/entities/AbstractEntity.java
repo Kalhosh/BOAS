@@ -4,13 +4,14 @@ import java.awt.event.KeyEvent;
 
 import controls.IControlled;
 import display_engine.IFollowable;
+import items.ItemTarget;
 import resources.Coordinates;
 import resources.Displayable;
 
 /**
  * @author BIZOT Loïc
  */
-public abstract class AbstractEntity implements Displayable, IFollowable, IControlled{
+public abstract class AbstractEntity implements Displayable, IFollowable, IControlled, ItemTarget{
 
 	protected Coordinates coords;
 	private IMap area;

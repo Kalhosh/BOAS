@@ -1,4 +1,4 @@
-package items;
+package effects;
 
 public class Bleed extends Effect{
 

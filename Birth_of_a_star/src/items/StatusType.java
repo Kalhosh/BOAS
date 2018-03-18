@@ -1,5 +1,8 @@
 package items;
 
+/**
+ * @author BIZOT Loïc
+ */
 public enum StatusType {
  
 	// kind of negative

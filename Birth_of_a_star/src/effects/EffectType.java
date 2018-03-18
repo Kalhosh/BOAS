@@ -1,5 +1,8 @@
-package items;
+package effects;
 
+/**
+ * @author BIZOT Loïc
+ */
 public enum EffectType {
 
 	RAW,

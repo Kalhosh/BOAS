@@ -8,6 +8,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import effects.Effect;
+import effects.EffectType;
 import resources.Coordinates;
 import resources.DisplayInfo;
 import resources.Rectangle;
@@ -129,6 +131,24 @@ public class Personnage1 extends Human{
 			running = false;
 			
 		}
+		
+	}
+
+	@Override
+	public void applyEffect(Effect e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void inflict(int intensity, EffectType type) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cure(int intensity) {
+		// TODO Auto-generated method stub
 		
 	}
 
