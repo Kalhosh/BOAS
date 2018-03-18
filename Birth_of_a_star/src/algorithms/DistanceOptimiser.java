@@ -19,7 +19,6 @@ public class DistanceOptimiser implements PathOptimiser{
 	}
 
 	/**
-	 * @see algorithms.PathOptimiser#compare(Link, Link)
 	 * <p> compare en fonction de la distance a la fin </p>
 	 */
 	public int compare(Link o1, Link o2) {

@@ -24,6 +24,7 @@ public interface IMap {
 	
 	/**
 	 * <p> appelée à chaque pas, regarde si l'entitée est sur un warp </p>
+	 * @param coords la coordonnée de l'entité appelante
 	 * @param caller l'entité appelante
 	 */
 	public void requestWarp(Coordinates coords, AbstractEntity caller);

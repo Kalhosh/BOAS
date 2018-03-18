@@ -49,8 +49,11 @@ public abstract class AbstractEntity implements Displayable, IFollowable, IContr
 		
 		// calcul des nouvelles coordonnées
 		double theta = Math.PI*direction.ordinal()/2;
-		int nx = (int) (coords.getX() + Math.cos(theta));
-		int ny = (int) (coords.getY() + Math.sin(theta));
+		int nx = (int) (coords.getX() + Math.cos(theta)*32);
+		int ny = (int) (coords.getY() + Math.sin(theta)*32);
+		
+		System.out.println("nx = " + nx);
+		
 		Coordinates newC = new Coordinates(nx,ny);
 		
 		// requette a la carte
@@ -90,16 +93,16 @@ public abstract class AbstractEntity implements Displayable, IFollowable, IContr
 		switch(key) {
 		
 		case KeyEvent.VK_Z:
-			move(Movement.MOVE_UP);
+			requestMove(Movement.MOVE_UP);
 			break;
 		case KeyEvent.VK_Q:
-			move(Movement.MOVE_LEFT);
+			requestMove(Movement.MOVE_LEFT);
 			break;
 		case KeyEvent.VK_S:
-			move(Movement.MOVE_DOWN);
+			requestMove(Movement.MOVE_DOWN);
 			break;
 		case KeyEvent.VK_D:
-			move(Movement.MOVE_RIGHT);
+			requestMove(Movement.MOVE_RIGHT);
 			break;
 		
 		}

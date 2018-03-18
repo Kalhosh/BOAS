@@ -34,7 +34,7 @@ public class Rectangle {
 	}
 	
 	/**
-	 * <p> constructeur par points, définissant un rectangle </p< 
+	 * <p> constructeur par points, définissant un rectangle </p> 
 	 * @param coord1 le premier point
 	 * @param coord2 le second point
 	 */

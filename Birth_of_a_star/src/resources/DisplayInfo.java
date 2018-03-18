@@ -1,7 +1,6 @@
 package resources;
 
 import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
@@ -37,6 +36,11 @@ public interface DisplayInfo {
 	
 	/**
 	 * <p> affichage d'une image avec décalage du la la vue </p>
+	 * @param image l'image a afficher
+	 * @param position l'endroit ou doit être affichée l'image
+	 * @param g le contexte graphique du panneau sur lequel l'image est affiché
+	 * @param selection la portion de l'image à afficher
+	 * @param io le panneau sur lequel afficher
 	 */
 	default void displayImage(BufferedImage image, Coordinates position, Graphics2D g, Rectangle selection, ImageObserver io) {
 		
@@ -51,9 +55,6 @@ public interface DisplayInfo {
 			
 			g.drawImage(image, left_top_corner_posX, left_top_corner_posY, left_top_corner_posX + getScale(), left_top_corner_posY + getScale(), 
 					selection.getX(), selection.getY(), selection.getX() + selection.getWidth(), selection.getY() + selection.getHeight(), io);
-			
-			Rectangle2D r = new Rectangle2D.Double(left_top_corner_posX,left_top_corner_posY,getScale(),getScale());
-			g.draw(r);
 			
 		}
 		

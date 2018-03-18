@@ -246,7 +246,7 @@ public class Main {
 		test.addKeyListener(bd);
 		
 		test.setContentPane(gp);
-		test.setTitle("Birth Of a Star");
+		test.setTitle("Birth Of A Star");
 		test.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		test.setSize(500,500);
 		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

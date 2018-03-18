@@ -1,7 +1,6 @@
 package resources;
 
 import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
@@ -17,9 +16,7 @@ public class Grass extends AbstractGround{
 	static boolean charged = false;
 	static BufferedImage sprite = null;
 	
-	/**
-	 * @see resources.Displayable#display(DisplayInfo, Point2D, Graphics2D, ImageObserver)
-	 */
+	@Override
 	public void display(DisplayInfo info, Coordinates position, Graphics2D g, ImageObserver io) {
 		
 		if(!charged) {

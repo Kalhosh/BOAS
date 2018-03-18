@@ -1,7 +1,6 @@
 package maps;
 
 import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
@@ -49,12 +48,12 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 	}
 	
 	/**
-	 * @see algorithms.ColisionHandler#canPassThrough(Point2D)
+	 * @see algorithms.ColisionHandler#canPassThrough(Coordinates)
 	 * */
 	public boolean canPassThrough(Coordinates coord){
 		
-		int x = coord.getX();
-		int y = coord.getY();
+		int x = coord.getX()/32;
+		int y = coord.getY()/32;
 		
 		if(isInBounds(coord))
 			return ground[x][y].canPassThrough();
@@ -64,12 +63,12 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 	}
 	
 	/**
-	 * @see algorithms.ColisionHandler#isInBounds(Point2D)
+	 * @see algorithms.ColisionHandler#isInBounds(Coordinates)
 	 */
 	public boolean isInBounds(Coordinates coord) {
 		
-		int x = coord.getX();
-		int y = coord.getY();
+		int x = coord.getX()/32;
+		int y = coord.getY()/32;
 		
 		boolean res = x >= 0 && x < X;
 		res = res &&  y >= 0 && y < Y;
@@ -156,7 +155,7 @@ public abstract class AbstractMap implements ColisionHandler,IMap{
 	 * @see entities.IMap#requestPassThrough(Coordinates, Coordinates, AbstractEntity)
 	 */
 	public boolean requestPassThrough(Coordinates to, Coordinates from, AbstractEntity caller) {
-		return false;
+		return this.canPassThrough(to);
 	}
 
 	/**
